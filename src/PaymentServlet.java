@@ -134,14 +134,59 @@ public class PaymentServlet extends HttpServlet {
 
                     con.commit();
 
-                    response.getWriter().println(
-                        "<h2>Payment Record Saved Successfully!</h2>" +
-                        "<p>Booking ID: " + bookingId + "</p>" +
-                        "<p>Amount: Rs. " + amount + "</p>" +
-                        "<p>Payment Method: " + method + "</p>" +
-                        "<p>Payment Status: Pending</p>" +
-                        "<a href='customer-dashboard.html'>Go to Dashboard</a>"
-                    );
+                
+response.getWriter().println(
+    "<!DOCTYPE html>" +
+    "<html><head><title>Payment Successful - SmartPark</title>" +
+    "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+    "<style>" +
+    "*{box-sizing:border-box;margin:0;padding:0;}" +
+    "body{font-family:Arial,sans-serif;min-height:100vh;" +
+    "display:flex;align-items:center;justify-content:center;" +
+    "padding:20px;background:linear-gradient(135deg,#071c27,#123e49,#087e83);}" +
+    ".card{width:100%;max-width:480px;background:#fff;border-radius:22px;" +
+    "overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);}" +
+    ".top{text-align:center;padding:35px 20px;background:linear-gradient(135deg,#103943,#087e83);color:white;}" +
+    ".check{width:85px;height:85px;border-radius:50%;background:#d1fae5;" +
+    "color:#059669;display:flex;align-items:center;justify-content:center;" +
+    "font-size:48px;margin:0 auto 18px;font-weight:bold;}" +
+    ".top h1{font-size:25px;margin-bottom:10px;}" +
+    ".top p{color:#d5eeee;font-size:14px;}" +
+    ".amount{font-size:38px;font-weight:bold;margin-top:20px;color:#65f0bd;}" +
+    ".body{padding:28px;}" +
+    ".body h3{color:#123e49;margin-bottom:20px;font-size:18px;}" +
+    ".detail{display:flex;justify-content:space-between;gap:10px;" +
+    "padding:14px 0;border-bottom:1px solid #e5eeee;font-size:14px;}" +
+    ".detail span{color:#64748b;}" +
+    ".detail strong{color:#173d46;text-align:right;}" +
+    ".status{color:#d97706!important;background:#fef3c7;" +
+    "padding:6px 13px;border-radius:20px;font-size:12px;}" +
+    ".btn{display:block;text-align:center;text-decoration:none;" +
+    "background:linear-gradient(135deg,#087e83,#10505b);color:white;" +
+    "padding:16px;border-radius:12px;margin-top:25px;font-weight:bold;" +
+    "letter-spacing:1px;transition:.3s;}" +
+    ".btn:hover{transform:translateY(-3px);}" +
+    ".footer{text-align:center;color:#94a3b8;font-size:11px;margin-top:22px;}" +
+    "</style></head><body>" +
+    "<div class='card'>" +
+    "<div class='top'>" +
+    "<div class='check'>&#10003;</div>" +
+    "<h1>PAYMENT SUCCESSFUL!</h1>" +
+    "<p>Your payment record has been saved successfully.</p>" +
+    "<div class='amount'>Rs. " + amount + "</div>" +
+    "</div>" +
+    "<div class='body'>" +
+    "<h3>Payment Details</h3>" +
+    "<div class='detail'><span>Booking ID</span><strong>" + bookingId + "</strong></div>" +
+    "<div class='detail'><span>Payment Amount</span><strong>Rs. " + amount + "</strong></div>" +
+    "<div class='detail'><span>Payment Method</span><strong>" + method + "</strong></div>" +
+    "<div class='detail'><span>Payment Status</span><strong class='status'>PENDING</strong></div>" +
+    "<a class='btn' href='customer-dashboard.html'>GO TO MY DASHBOARD &#8594;</a>" +
+    "<div class='footer'>SMARTPARK MANAGEMENT SYSTEM<br>Smart Parking. Easy Living.</div>" +
+    "</div></div></body></html>"
+);
+    
+                    
 
                 } catch (Exception e) {
                     con.rollback();

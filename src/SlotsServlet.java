@@ -16,57 +16,54 @@ public class SlotsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
-                         throws ServletException, IOException {
+            throws ServletException, IOException {
 
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
 
-        PrintWriter out = response.getWriter();
+        try (PrintWriter out = response.getWriter()) {
 
-        StringBuilder json = new StringBuilder();
-        json.append("[");
-
-        try (Connection con = DBConnection.getConnection()) {
-
-            if (con == null) {
-                response.setStatus(500);
-                out.print("{\"error\":\"Database connection failed\"}");
-                return;
-            }
-
-            String sql = "SELECT slot_no, status FROM slots ORDER BY slot_no";
-
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
+            StringBuilder json = new StringBuilder("[");
             boolean first = true;
 
-            while (rs.next()) {
+            String sql =
+                "SELECT slot_id AS slot_no, status " +
+                "FROM parking_slots ORDER BY slot_id";
 
-                if (!first) {
-                    json.append(",");
+            try (Connection con = DBConnection.getConnection();
+                 PreparedStatement ps = con.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+
+                    if (!first) {
+                        json.append(",");
+                    }
+
+                    String dbStatus = rs.getString("status");
+
+                    String status =
+                        ("Available".equalsIgnoreCase(dbStatus)
+                         || "FREE".equalsIgnoreCase(dbStatus))
+                        ? "FREE" : "BOOKED";
+
+                    json.append("{");
+                    json.append("\"slot_no\":")
+                        .append(rs.getInt("slot_no")).append(",");
+                    json.append("\"status\":\"")
+                        .append(status).append("\"");
+                    json.append("}");
+
+                    first = false;
                 }
 
-                json.append("{");
-                json.append("\"slot_no\":").append(rs.getInt("slot_no")).append(",");
-                json.append("\"status\":\"")
-                    .append(rs.getString("status")).append("\"");
-                json.append("}");
+                json.append("]");
+                out.print(json.toString());
 
-                first = false;
+            } catch (Exception e) {
+                response.setStatus(500);
+                out.print("{\"error\":\"Unable to fetch parking slots\"}");
+                e.printStackTrace();
             }
-
-            json.append("]");
-            out.print(json.toString());
-
-            rs.close();
-            ps.close();
-
-        } catch (Exception e) {
-            response.setStatus(500);
-            out.print("{\"error\":\"Unable to fetch parking slots\"}");
-            e.printStackTrace();
         }
     }
 }
-

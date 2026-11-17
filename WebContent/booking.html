@@ -2,10 +2,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Smart Parking - Booking</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartPark - Parking Booking</title>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
+            padding: 25px 15px;
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #071b33, #087e8b);
             min-height: 100vh;
@@ -15,86 +23,183 @@
         }
 
         .booking-box {
-            background: white;
-            width: 380px;
-            padding: 30px;
-            border-radius: 15px;
+            background: #ffffff;
+            width: 100%;
+            max-width: 450px;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .brand {
+            text-align: center;
+            color: #087e8b;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
         }
 
         h2 {
             text-align: center;
-            color: #087e8b;
+            color: #071b33;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .price-card {
+            background: linear-gradient(135deg, #071b33, #087e8b);
+            color: white;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .price-card small {
+            color: #d5eeee;
+            letter-spacing: 1px;
+        }
+
+        .price {
+            font-size: 30px;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .price-card p {
+            margin: 0;
+            font-size: 12px;
+            color: #d5eeee;
+        }
+
+        label {
+            display: block;
+            margin-top: 13px;
+            color: #263746;
+            font-size: 13px;
+            font-weight: bold;
         }
 
         input, select {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
+            padding: 13px;
+            margin-top: 7px;
+            border: 1px solid #d8e0e5;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            border-color: #087e8b;
         }
 
         button {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
+            margin-top: 22px;
             background: #087e8b;
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
         }
 
-        p {
+        button:hover {
+            background: #065d68;
+        }
+
+        .links {
             text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        .links a {
+            color: #087e8b;
+            text-decoration: none;
+            margin: 0 8px;
         }
     </style>
 </head>
+
 <body>
 
 <div class="booking-box">
+
+    <div class="brand">SMARTPARK</div>
     <h2>Parking Booking</h2>
+    <p class="subtitle">Reserve your parking space easily and securely.</p>
 
-   <form action="booking" method="post">
+    <div class="price-card">
+        <small>PARKING CHARGES</small>
+        <div class="price">₹50 / Hour</div>
+        <p>Affordable and convenient parking</p>
+    </div>
 
-    <input type="text" id="name" name="name"
-           placeholder="Customer Name" required>
+    <form action="booking" method="post">
 
-    <input type="tel" id="phone" name="phone"
-           placeholder="Phone Number" required>
+        <label>Customer Name</label>
+        <input type="text" id="name" name="name"
+               placeholder="Enter your name" required>
 
-    <select id="slot" name="slot" required>
-    <option value="">Select Parking Slot</option>
-    <script>
-        for (let i = 1; i <= 20; i++) {
-            document.write(`<option value="${i}">Slot ${i}</option>`);
-        }
-    </script>
-</select>
-    <input type="date" id="date" name="date" required>
-    <input type="time" id="time" name="time" required>
+        <label>Phone Number</label>
+        <input type="tel" id="phone" name="phone"
+               placeholder="Enter phone number" required>
 
-    <input type="text" id="vehicle" name="vehicle"
-           placeholder="Vehicle Number" required>
+        <label>Select Parking Slot</label>
+        <select id="slot" name="slot" required>
+            <option value="">Select Parking Slot</option>
+            <script>
+                for (let i = 1; i <= 20; i++) {
+                    document.write(`<option value="${i}">Slot ${i}</option>`);
+                }
+            </script>
+        </select>
 
-    <button type="submit">Confirm Booking</button>
+        <label>Booking Date</label>
+        <input type="date" id="date" name="date" required>
 
-</form>
-    <p><a href="slots.html">View Parking Slots</a></p>
-    <p><a href="index.html">Back to Home</a></p>
+        <label>Starting Time</label>
+        <input type="time" id="time" name="time" required>
+        <label>Ending Time</label>
+<input type="time" id="endTime" name="endTime" required>
+
+        <label>Vehicle Number</label>
+        <input type="text" id="vehicle" name="vehicle"
+               placeholder="Example: KA 17 AB 1234" required>
+
+        <button type="submit">Confirm Booking</button>
+
+    </form>
+
+    <div class="links">
+        <a href="slots.html">View Parking Slots</a>
+        |
+        <a href="index.html">Home</a>
+    </div>
+
 </div>
 
 <script>
-    // Get selected slot number from URL
     const urlParams = new URLSearchParams(window.location.search);
     const selectedSlot = urlParams.get("slot");
 
-    // Automatically select the slot
     if (selectedSlot) {
         document.getElementById("slot").value = selectedSlot;
     }
+
+    document.getElementById("date").min =
+        new Date().toISOString().split("T")[0];
 </script>
 
 </body>
 </html>
-

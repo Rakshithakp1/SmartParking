@@ -8,9 +8,9 @@ public class DBConnection {
     private static final String URL =
         "jdbc:mysql://localhost:3306/smart_parking";
 
-    private static final String USER = "root";
+    private static final String USER = "smartparking_app";
 
-    private static final String PASSWORD = "Parking@New2026!";
+    private static final String PASSWORD = "pprs@123";
 
     public static Connection getConnection() {
 
