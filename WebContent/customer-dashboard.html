@@ -1,0 +1,204 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard - Smart Parking</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #123b5d;
+            color: white;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            font-size: 25px;
+        }
+
+        .logout {
+            background: #ef4444;
+            color: white;
+            padding: 11px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .welcome {
+            margin: 40px auto 25px;
+            width: 86%;
+            background: linear-gradient(120deg, #123b5d, #168aad);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .welcome h1 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .welcome p {
+            font-size: 16px;
+        }
+
+        .container {
+            width: 86%;
+            margin: 30px auto;
+        }
+
+        .container h2 {
+            margin-bottom: 22px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 13px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card .emoji {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            color: #123b5d;
+        }
+
+        .card p {
+            color: #64748b;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .card a {
+            display: inline-block;
+            background: #168aad;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            background: #123b5d;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            background: #123b5d;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .welcome {
+                padding: 25px;
+            }
+
+            .welcome h1 {
+                font-size: 24px;
+            }
+
+            header h2 {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>🚗 Smart Parking System</h2>
+        <a class="logout" href="index.html">Logout</a>
+    </header>
+
+    <section class="welcome">
+        <h1>Welcome to Customer Dashboard!</h1>
+        <p>Manage your parking easily and save your valuable time.</p>
+    </section>
+
+    <div class="container">
+        <h2>Customer Services</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="emoji">🅿️</div>
+                <h3>View Parking Slots</h3>
+                <p>Check available parking slots.</p>
+                <a href="slots.html">View Slots</a>
+            </div>
+
+            <div class="card">
+                <div class="emoji">🚘</div>
+                <h3>Book Parking</h3>
+                <p>Reserve your parking slot easily.</p>
+                <a href="booking.html">Book Now</a>
+            </div>
+
+            <div class="card">
+                <div class="emoji">📋</div>
+                <h3>My Bookings</h3>
+                <p>View your parking booking details.</p>
+                <a href="mybookings">My Bookings</a>
+            </div>
+
+            <div class="card">
+                <div class="emoji">💳</div>
+                <h3>Payment</h3>
+                <p>Complete your parking payment.</p>
+                <a href="payment.html">Pay Now</a>
+            </div>
+
+            <div class="card">
+                <div class="emoji">📜</div>
+                <h3>Payment History</h3>
+                <p>View your previous parking payment details.</p>
+                <a href="payment-history">Payment History</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Smart Parking Management System | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

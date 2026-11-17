@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking - Staff Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef4f7;
+        }
+
+        header {
+            background: #073b4c;
+            color: white;
+            padding: 20px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            padding: 35px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            color: #087e8b;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            color: #073b4c;
+        }
+
+        button {
+            background: #087e8b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #073b4c;
+        }
+
+        .logout {
+            background: #e63946;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>🚗 Smart Parking - Staff Panel</h2>
+    <button class="logout" onclick="logout()">Logout</button>
+</header>
+
+<div class="container">
+
+    <div class="welcome">
+        <h2 id="staffName">Welcome, Staff!</h2>
+        <p>Welcome to your Smart Parking Staff Dashboard.</p>
+        <p>Manage and monitor customer parking bookings.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🚘 Customer Bookings</h3>
+            <p>View customer parking booking details.</p>
+            <button onclick="location.href='staff-appointments'">
+                View Bookings
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>🅿️ Parking Slots</h3>
+            <p>Check parking slot availability.</p>
+            <button onclick="location.href='slots.html'">
+                View Slots
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>🏠 Home</h3>
+            <p>Return to the main page.</p>
+            <button onclick="location.href='index.html'">
+                Go to Home
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    Smart Parking Management System
+</footer>
+
+<script>
+
+   const urlParams = new URLSearchParams(window.location.search);
+
+const staffName =
+    urlParams.get("name") || localStorage.getItem("staffName");
+
+if (staffName) {
+    document.getElementById("staffName").innerText =
+        "Welcome, " + staffName + "!";
+}
+
+    function logout() {
+        window.location.href = "logout";
+    }
+
+</script>
+
+</body>
+</html>

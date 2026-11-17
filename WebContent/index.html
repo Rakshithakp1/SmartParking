@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartPark | Smart Parking Management</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f5f8fc;
+    color: #142d3b;
+}
+
+header {
+    background: #082b3a;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #31d6bd;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #e5f2f5;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #31d6bd;
+}
+
+.nav-btn {
+    background: #20bfa8;
+    color: #062b36 !important;
+    padding: 10px 19px;
+    border-radius: 25px;
+    font-weight: 700;
+}
+
+.hero {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    padding: 75px 8%;
+    background:
+    linear-gradient(90deg, rgba(3,29,42,.96), rgba(3,29,42,.72)),
+    url('https://images.unsplash.com/photo-1590674899484-d5640e854abe?auto=format&fit=crop&w=1800&q=85');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 680px;
+}
+
+.tag {
+    color: #31d6bd;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: #31d6bd;
+}
+
+.hero p {
+    color: #d4e4e9;
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 25px;
+    border-radius: 7px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.primary {
+    background: #20c5ae;
+    color: #062b36;
+}
+
+.secondary {
+    border: 1px solid white;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+section {
+    padding: 70px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    color: #082b3a;
+}
+
+.section-title p {
+    color: #71818a;
+    margin-top: 10px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px 23px;
+    border-radius: 13px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.06);
+    text-align: center;
+    transition: .3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+}
+
+.feature-icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    color: #082b3a;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #71818a;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.steps-section {
+    background: #eaf3f5;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    text-align: center;
+}
+
+.step {
+    background: white;
+    padding: 28px 18px;
+    border-radius: 12px;
+}
+
+.step-number {
+    background: #082b3a;
+    color: #31d6bd;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 15px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.step p {
+    color: #71818a;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.cta {
+    text-align: center;
+    background: #082b3a;
+    color: white;
+}
+
+.cta h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.cta p {
+    color: #c6d8df;
+    margin-bottom: 25px;
+}
+
+footer {
+    background: #041e29;
+    color: #c3d5dc;
+    padding: 30px 8%;
+    text-align: center;
+}
+
+footer a {
+    color: #31d6bd;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 13px;
+}
+
+footer p {
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+@media(max-width:700px) {
+    header {
+        justify-content: center;
+    }
+    nav {
+        justify-content: center;
+        gap: 14px;
+    }
+    .hero {
+        padding: 65px 7%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Smart<span>Park.</span></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="slots.html">Parking Slots</a>
+        <a href="login.html">Customer Login</a>
+        <a href="register.html" class="nav-btn">Get Started</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <div class="hero-content">
+        <div class="tag">SMART PARKING MANAGEMENT SYSTEM</div>
+
+        <h1>Parking Made <span>Easy & Smart</span></h1>
+
+        <p>
+            Find available parking spaces, reserve your slot,
+            and manage your bookings with ease.
+            Save time and enjoy a hassle-free parking experience.
+        </p>
+
+        <div class="buttons">
+            <a href="register.html" class="btn primary">
+                Book Your Parking →
+            </a>
+
+            <a href="slots.html" class="btn secondary">
+                View Available Slots
+            </a>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div class="section-title">
+        <h2>Why Choose SmartPark?</h2>
+        <p>A smarter way to manage your parking experience.</p>
+    </div>
+
+    <div class="features">
+
+        <div class="feature-card">
+            <div class="feature-icon">🅿️</div>
+            <h3>Easy Slot Booking</h3>
+            <p>View parking availability and book your preferred parking slot easily.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Real-Time Availability</h3>
+            <p>Check available and occupied parking slots before making a booking.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💳</div>
+            <h3>Easy Payments</h3>
+            <p>Maintain payment records with different payment methods.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📋</div>
+            <h3>Booking Management</h3>
+            <p>View your booking history and manage your parking reservations.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="steps-section">
+    <div class="section-title">
+        <h2>How It Works</h2>
+        <p>Book your parking space in four simple steps.</p>
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Register / Login</h3>
+            <p>Create your account and login securely.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Select a Slot</h3>
+            <p>Choose an available parking slot.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Confirm Booking</h3>
+            <p>Enter vehicle and booking details.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>Make Payment</h3>
+            <p>Save your payment record and view booking details.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Ready to Park Smarter?</h2>
+    <p>Start your hassle-free parking experience today.</p>
+    <a href="register.html" class="btn primary">Create Your Account →</a>
+</section>
+
+<footer>
+    <div class="logo">Smart<span>Park.</span></div>
+
+    <p>
+        <a href="index.html">Home</a>
+        <a href="slots.html">Parking Slots</a>
+        <a href="login.html">Customer Login</a>
+        <a href="staff-login.html">Staff Login</a>
+        <a href="admin-login.html">Admin Login</a>
+    </p>
+
+    <p>© 2026 SmartPark | Smart Parking Management System</p>
+</footer>
+
+</body>
+</html>

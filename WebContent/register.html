@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Parking - Register</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #071b33, #087e8b);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-box {
+            background: white;
+            width: 380px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px #0005;
+        }
+
+        h2 {
+            text-align: center;
+            color: #087e8b;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #087e8b;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #075965;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            color: #087e8b;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="register-box">
+
+    <h2>Create Account</h2>
+
+    <form action="register" method="post"
+          onsubmit="return validatePassword()">
+
+        <input type="text"
+               name="name"
+               placeholder="Full Name"
+               required>
+
+        <input type="email"
+               name="email"
+               placeholder="Email Address"
+               required>
+
+        <input type="tel"
+               name="phone"
+               placeholder="Phone Number"
+               required>
+
+        <input type="password"
+               id="password"
+               name="password"
+               placeholder="Password"
+               required>
+
+        <input type="password"
+               id="confirmPassword"
+               placeholder="Confirm Password"
+               required>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <p>Already have an account?
+        <a href="login.html">Login</a>
+    </p>
+
+    <p><a href="index.html">Back to Home</a></p>
+
+</div>
+
+<script>
+function validatePassword() {
+
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+</body>
+</html>

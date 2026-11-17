@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Parking - Booking</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #071b33, #087e8b);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .booking-box {
+            background: white;
+            width: 380px;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #087e8b;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #087e8b;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        p {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="booking-box">
+    <h2>Parking Booking</h2>
+
+   <form action="booking" method="post">
+
+    <input type="text" id="name" name="name"
+           placeholder="Customer Name" required>
+
+    <input type="tel" id="phone" name="phone"
+           placeholder="Phone Number" required>
+
+    <select id="slot" name="slot" required>
+    <option value="">Select Parking Slot</option>
+    <script>
+        for (let i = 1; i <= 20; i++) {
+            document.write(`<option value="${i}">Slot ${i}</option>`);
+        }
+    </script>
+</select>
+    <input type="date" id="date" name="date" required>
+    <input type="time" id="time" name="time" required>
+
+    <input type="text" id="vehicle" name="vehicle"
+           placeholder="Vehicle Number" required>
+
+    <button type="submit">Confirm Booking</button>
+
+</form>
+    <p><a href="slots.html">View Parking Slots</a></p>
+    <p><a href="index.html">Back to Home</a></p>
+</div>
+
+<script>
+    // Get selected slot number from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedSlot = urlParams.get("slot");
+
+    // Automatically select the slot
+    if (selectedSlot) {
+        document.getElementById("slot").value = selectedSlot;
+    }
+</script>
+
+</body>
+</html>
+
