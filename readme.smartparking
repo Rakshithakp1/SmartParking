@@ -1,0 +1,172 @@
+🚗 SmartPark -- Smart Parking Management System
+SmartPark is a web-based Smart Parking Management System developed
+using Java, Apache Tomcat, MySQL, HTML, CSS, and JavaScript. The
+application helps customers find and book parking slots, manage their
+bookings, and make payments. It also provides administration features to
+manage parking operations and monitor payments.
+📌 Project Overview
+Finding and managing parking spaces can be time-consuming, especially
+when slot availability is not known in advance. SmartPark provides a
+simple web-based platform where customers can register, log in, view
+parking slot availability, book a slot, and view their booking and
+payment history.
+
+The system also includes administrative features for monitoring
+bookings, managing parking slots, and tracking payment information.
+🎯 Objectives
+- Simplify the process of parking slot booking.
+- Display parking slot availability.
+- Maintain customer and booking details.
+- Provide a convenient payment-record management system.
+- Help administrators monitor parking operations.
+✨ Features
+👤 Customer Module
+- Customer registration and login.
+- Customer dashboard.
+- View available parking slots.
+- Select a parking slot and enter vehicle details.
+- Book a parking slot.
+- View booking history.
+- Make and view payment records.
+- View booking and payment status.
+🛠️ Admin Module
+- Admin dashboard.
+- View parking and booking information.
+- Manage parking slots.
+- View payment records.
+- Monitor total payments, payment amount, pending payments, and
+  completed payments.
+👨‍💼 Staff Module
+- Staff login interface.
+- Staff-related access to the parking management system.
+Note: The available modules and permissions depend on the
+implementation included in the repository.
+
+💻 Technologies Used
+  Technology           Purpose
+  Java                 Server-side programming
+Java Servlets        Request handling and application logic
+Apache Tomcat 9      Web application server
+MySQL                Database management
+JDBC                 Java--MySQL connectivity
+HTML5                Web page structure
+CSS3                 Styling and responsive layouts
+JavaScript           Client-side interaction
+Visual Studio Code   Development environment
+MySQL Workbench      Database management
+⚙️ Software Requirements
+Install the following software before running the project:
+1. Java JDK 17 or compatible JDK.
+2. Apache Tomcat 9.
+3. MySQL Server.
+4. MySQL Workbench (recommended).
+5. Visual Studio Code or another Java-compatible IDE.
+6. MySQL Connector/J JDBC driver.
+📂 Project Structure
+SmartParking/
+│
+├── .vscode/
+│
+├── src/
+│   └── Java source files and Servlets
+│
+└── WebContent/
+    ├── WEB-INF/
+    │   ├── classes/
+    │   ├── lib/
+    │   │   └── mysql-connector-j-26.10.0.jar
+    │   └── web.xml
+    │
+    ├── index.html
+    ├── login.html
+    ├── register.html
+    ├── customer-dashboard.html
+    ├── booking.html
+    └── Other HTML, CSS and JavaScript files
+The structure above is a guide to the main application folders and
+pages. Actual files may vary as the project develops.
+🗄️ Database Configuration
+The project uses MySQL as its database.
+1. Start the MySQL Server.
+2. Open MySQL Workbench.
+3. Create the project database:
+CREATE DATABASE smart_parking;
+4. Select the smart_parking database.
+5. Create or import the tables required by the application, such as
+   customer, parking slot, booking, staff, and payment tables.
+6. Open DBConnection.java in the source folder.
+7. Update the database URL, username, and password according to your
+   local MySQL configuration.
+Example JDBC configuration:
+String url = "jdbc:mysql://localhost:3306/smart_parking";
+String username = "root";
+String password = "YOUR_MYSQL_PASSWORD";
+Important: Replace the example credentials with your own local MySQL
+credentials. Never upload real database passwords to GitHub.
+
+Make sure the MySQL Connector/J JAR is available in the application's
+WEB-INF/lib folder and included in the Java classpath.
+▶️ How to Run the Project
+Step 1: Clone the repository
+git clone https://github.com/Rakshithakp1/SmartParking.git
+Step 2: Open the project
+Open the downloaded SmartParking folder in Visual Studio Code.
+Step 3: Configure Java and MySQL
+- Install and configure JDK.
+- Start MySQL Server.
+- Create the smart_parking database and required tables.
+- Update the database credentials in DBConnection.java.
+Step 4: Configure Apache Tomcat
+- Install Apache Tomcat 9.
+- Make sure the Servlet API JAR is available for compilation.
+- Configure the project to use the Tomcat server.
+- Deploy the WebContent application folder as the SmartParking web
+  application.
+Step 5: Compile Java files
+From the project root, compile the Java source files using the Tomcat
+Servlet API and MySQL Connector/J in the classpath.
+
+Example for PowerShell (adjust the JAR paths and source file names to
+match your installation):
+javac -cp "PATH_TO_TOMCAT\lib\servlet-api.jar;WebContent\WEB-INF\lib\*;WebContent\WEB-INF\classes" -d "WebContent\WEB-INF\classes" src\*.java
+Step 6: Start Tomcat
+Start the Tomcat server and deploy the application.
+Step 7: Open the application
+Open the application in your browser:
+http://localhost:8081/SmartParking/
+If your Tomcat connector uses a different port, replace 8081 with your
+configured port.
+🔄 Application Workflow
+1. A new customer registers in the system.
+2. The customer logs in.
+3. The customer views available parking slots.
+4. The customer selects a slot and enters vehicle details.
+5. The system saves the booking.
+6. The customer views booking information and makes a payment.
+7. Payment details are stored and displayed in payment history.
+8. The administrator monitors bookings, slots, and payments.
+🔐 Security Notes
+- Use your own database credentials in the local configuration.
+- Do not commit passwords, private keys, or sensitive configuration
+  files.
+- For production use, implement secure password hashing, input
+  validation, session management, and appropriate authorization
+  checks.
+🚀 Future Enhancements
+- Live parking slot availability updates.
+- Online payment gateway integration.
+- QR-code-based entry and exit.
+- Parking duration and automatic fee calculation.
+- Email/SMS booking notifications.
+- Reports and analytics dashboard.
+👩‍💻 Author
+Rakshitha K P
+
+GitHub: Rakshithakp1
+
+Project Repository:
+SmartParking
+📄 License
+This project is developed for educational and academic purposes. Add a
+license file if you intend to distribute the project under a specific
+open-source license.
